@@ -9,9 +9,18 @@ In a real project environment those would be discussed previously, but these are
 
 ## Requirements:
 - PHP (tested with version 8.1)
+- Composer
 - Docker
 
 ## Usage
+### First run:
+- Run `composer update` in the project directory
+- Run `docker compose up` to start the database server.
+- Run `symfony console doctrine:migrations:migrate` to start the database server.
+- Run `symfony server:start` to start the server.
+- Navigate to https://127.0.0.1:8000/
+
+### Subsequent executions:
 - Run `docker compose up` to start the database server.
 - Run `symfony server:start` to start the server.
 - Navigate to https://127.0.0.1:8000/
