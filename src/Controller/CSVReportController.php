@@ -19,7 +19,11 @@ class CSVReportController extends AbstractController
         return $response;
     }
 
-    private function getCSVResponse() {
+    /**
+     * Generates a Response object with the proper headers for a CSV to be downloaded by the user
+     * @return Response
+     */
+    private function getCSVResponse(): Response {
         $response = new Response();
         $response->headers->set('Content-Encoding', 'UTF-8');
         $response->headers->set('Content-Type', 'text/csv; charset=UTF-8');
