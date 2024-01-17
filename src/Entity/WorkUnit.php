@@ -20,7 +20,7 @@ class WorkUnit
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $end = null;
 
-    #[ORM\ManyToOne(cascade: ['persist', 'remove'], inversedBy: 'workUnit')]
+    #[ORM\ManyToOne(inversedBy: 'workUnit')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Project $project = null;
 
