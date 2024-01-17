@@ -18,7 +18,7 @@ class Project
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'project', targetEntity: WorkUnit::class)]
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: WorkUnit::class, cascade: ['persist', 'remove'])]
     private Collection $workUnit;
 
     public function getWorkUnit(): Collection
