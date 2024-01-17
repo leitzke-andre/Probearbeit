@@ -14,7 +14,7 @@ In a real project environment those would be discussed previously, but are nonet
 ## Usage
 - Run `docker compose up` to start the database server.
 - Run `symfony server:start` to start the server.
-- Navigate to https://127.0.0.1:8000/timetracker
+- Navigate to https://127.0.0.1:8000/
 
 # Assumptions
 ## Technical
@@ -24,3 +24,4 @@ In a real project environment those would be discussed previously, but are nonet
 ## Business
 - A WorkUnit contains only start and end date/time, and no description is given.
 - A WorkUnit pertains to only a single Project, a Project is expected to have multiple WorkUnits
+- The evaluation chart will bring the full data history, aggregated by day or month as requested by the user. In a real production environment, there would likely be a cut-off or initial filter to ensure usability would not be sacrificed due to data volume.
