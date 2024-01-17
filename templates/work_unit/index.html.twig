@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>Start</th>
                 <th>End</th>
+                <th>Project</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                 <td>{{ work_unit.id }}</td>
                 <td>{{ work_unit.start ? work_unit.start|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ work_unit.end ? work_unit.end|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ work_unit.project.name }}</td>
                 <td>
                     <a href="{{ path('app_work_unit_show', {'id': work_unit.id}) }}">show</a>
                     <a href="{{ path('app_work_unit_edit', {'id': work_unit.id}) }}">edit</a>
