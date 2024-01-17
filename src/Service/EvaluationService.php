@@ -13,42 +13,29 @@ class EvaluationService
     }
 
     public function getMonthlyReport(): array {
-        $workUnits = $this->workUnitRepository->findAll();
-        $reportData = array();
-        foreach($workUnits as $workUnit){
-            $workMonth = $workUnit->getStart()->format('Y-m');
-            $project = $workUnit->getProject()->getName();
-            if (array_key_exists($workMonth, $reportData)) {
-                if(array_key_exists($project, $reportData[$workMonth])) {
-                    // Add the time to existing time
-                    $reportData[$workMonth][$project] += $workUnit->getTimeElapsedInMinutes();
-                } else {
-                    // Add the project and time as a new entry
-                    $reportData[$workMonth][$project] = $workUnit->getTimeElapsedInMinutes();
-                }
-            } else {
-                $reportData[$workMonth] = array($project => $workUnit->getTimeElapsedInMinutes());
-            }
-        }
-        return $reportData;
+        return $this->getEvaluationReport('Y-m');
     }
 
     public function getDailyReport(): array {
+        return $this->getEvaluationReport('Y-m-d');
+    }
+
+    private function getEvaluationReport(string $dateFormat): array {
         $workUnits = $this->workUnitRepository->findAll();
         $reportData = array();
         foreach($workUnits as $workUnit){
-            $workMonth = $workUnit->getStart()->format('Y-m-d');
+            $workPeriod = $workUnit->getStart()->format($dateFormat);
             $project = $workUnit->getProject()->getName();
-            if (array_key_exists($workMonth, $reportData)) {
-                if(array_key_exists($project, $reportData[$workMonth])) {
+            if (array_key_exists($workPeriod, $reportData)) {
+                if(array_key_exists($project, $reportData[$workPeriod])) {
                     // Add the time to existing time
-                    $reportData[$workMonth][$project] += $workUnit->getTimeElapsedInMinutes();
+                    $reportData[$workPeriod][$project] += $workUnit->getTimeElapsedInMinutes();
                 } else {
                     // Add the project and time as a new entry
-                    $reportData[$workMonth][$project] = $workUnit->getTimeElapsedInMinutes();
+                    $reportData[$workPeriod][$project] = $workUnit->getTimeElapsedInMinutes();
                 }
             } else {
-                $reportData[$workMonth] = array($project => $workUnit->getTimeElapsedInMinutes());
+                $reportData[$workPeriod] = array($project => $workUnit->getTimeElapsedInMinutes());
             }
         }
         return $reportData;
