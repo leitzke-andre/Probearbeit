@@ -9,7 +9,7 @@ use DateTime;
 class WorkUnitTest extends TestCase
 {
 
-    public function testGetTimeElapsedInMinutes_OneMinute()
+    public function test_getTimeElapsedInMinutes_difference_should_be_equal_to_one_minute()
     {
         $workUnit = new WorkUnit();
         $workUnit->setStart(new DateTime('2024-01-01 00:00:00'));
@@ -18,7 +18,7 @@ class WorkUnitTest extends TestCase
         self::assertEquals(1, $workUnit->getTimeElapsedInMinutes());
     }
 
-    public function testGetTimeElapsedInMinutes_OverOneHour()
+    public function testGetTimeElapsedInMinute_should_work_for_periods_over_60_minutes()
     {
         $workUnit = new WorkUnit();
         $workUnit->setStart(new DateTime('2024-01-01 00:00:00'));
@@ -27,7 +27,7 @@ class WorkUnitTest extends TestCase
         self::assertEquals(61, $workUnit->getTimeElapsedInMinutes());
     }
 
-    public function testIsValid_EndDateGreater()
+    public function testIsValid_WorkUnit_is_valid_when_end_time_is_greater_than_start_time()
     {
         $workUnit = new WorkUnit();
         $workUnit->setStart(new DateTime('2024-01-01 00:00:00'));
@@ -36,7 +36,7 @@ class WorkUnitTest extends TestCase
         self::assertTrue($workUnit->isValid());
     }
 
-    public function testIsValid_DatesEqual()
+    public function testIsValid_WorkUnit_is_not_valid_when_end_time_is_equal_to_start_time()
     {
         $workUnit = new WorkUnit();
         $workUnit->setStart(new DateTime('2024-01-01 00:00:00'));
@@ -45,7 +45,7 @@ class WorkUnitTest extends TestCase
         self::assertNotTrue($workUnit->isValid());
     }
 
-    public function testIsValid_StartDateGreater()
+    public function testIsValid_is_not_valid_when_start_time_is_greater_than_end_time()
     {
         $workUnit = new WorkUnit();
         $workUnit->setStart(new DateTime('2024-01-01 01:01:01'));
