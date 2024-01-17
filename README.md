@@ -19,6 +19,7 @@ In a real project environment those would be discussed previously, but are nonet
 # Assumptions
 ## Technical
 - MariaDB (version 10.5.0) is being used instead of MySQL, as it is a 100% compatible drop-in for this. The code itself requires no changes to be executed against MySQL, requiring only the adjustment of the connection string's `serverVersion` parameter.
+- For the sake of simplicity, all changes will be directly merged into main, no branching strategy will be used for the challenge repository.
 
 ## Business
 - A WorkUnit contains only start and end date/time, and no description is given.
