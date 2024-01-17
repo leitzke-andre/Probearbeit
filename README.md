@@ -16,7 +16,7 @@ In a real project environment those would be discussed previously, but these are
 ### First run:
 - Run `composer update` in the project directory
 - Run `docker compose up` to start the database server.
-- Run `symfony console doctrine:migrations:migrate` to start the database server.
+- Run `symfony console doctrine:migrations:migrate` to execute the database migrations.
 - Run `symfony server:start` to start the server.
 - Navigate to https://127.0.0.1:8000/
 
