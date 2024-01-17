@@ -36,20 +36,4 @@ class Project
         return $this;
     }
 
-    public function getWorkUnit(): ?WorkUnit
-    {
-        return $this->workUnit;
-    }
-
-    public function setWorkUnit(WorkUnit $workUnit): static
-    {
-        // set the owning side of the relation if necessary
-        if ($workUnit->getProject() !== $this) {
-            $workUnit->setProject($this);
-        }
-
-        $this->workUnit = $workUnit;
-
-        return $this;
-    }
 }
