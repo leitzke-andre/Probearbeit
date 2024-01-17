@@ -5,30 +5,8 @@
 {% block body %}
     <h1>Daily Evaluation</h1>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>Project</th>
-            <th>Total Minutes Worked</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for reportDay, dailyData in reportData %}
-            {% for project, timeInMinutes in dailyData %}
-                <tr>
-                    <td>{{ reportDay }}</td>
-                    <td>{{ project }}</td>
-                    <td>{{ timeInMinutes }}</td>
-                </tr>
-            {% endfor %}
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {{ include('evaluation/_report.html.twig') }}
+
     <br>
     <ul>
         <li><a href="{{ path('app_evaluation') }}">Back to Evaluation</a></li>
