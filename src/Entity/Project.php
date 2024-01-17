@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
@@ -16,8 +18,24 @@ class Project
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'project', cascade: ['persist', 'remove'])]
-    private ?WorkUnit $workUnit = null;
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: WorkUnit::class)]
+    private Collection $workUnit;
+
+    public function getWorkUnit(): Collection
+    {
+        return $this->workUnit;
+    }
+
+    public function setWorkUnit(Collection $workUnit): void
+    {
+        $this->workUnit = $workUnit;
+    }
+
+    public function __construct()
+    {
+        $this->workUnit = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
