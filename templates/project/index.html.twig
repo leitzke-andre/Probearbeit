@@ -30,7 +30,9 @@
         {% endfor %}
         </tbody>
     </table>
+    <ul>
+        <li><a href="{{ path('app_project_new') }}">Create new</a></li>
+        <li><a href="{{ path('app_home') }}">Back to top</a></li>
+    </ul>
 
-    <a href="{{ path('app_project_new') }}">Create new</a><br>
-    <a href="{{ path('app_home') }}">Back to top</a>
 {% endblock %}
