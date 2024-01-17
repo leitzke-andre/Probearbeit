@@ -81,7 +81,7 @@ class WorkUnit
      **/
      public function isValid(): bool
     {
-        if ($this->end > $this->start ) { return true; }
+        if (($this->end > $this->start) && !is_null($this->project) ) { return true; }
         return false;
     }
 }
