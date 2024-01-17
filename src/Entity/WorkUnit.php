@@ -65,7 +65,23 @@ class WorkUnit
         return $this;
     }
 
-    public function getTimeElapsedInMinutes() :int {
-        return abs(($this->end->getTimestamp() - $this->start->getTimestamp()) / 60);
+    /**
+     * Gets the elapsed time between `start date` and `end date` in minutes.
+     * @return int
+     */
+    public function getTimeElapsedInMinutes(): int
+    {
+        return intval(abs(($this->end->getTimestamp() - $this->start->getTimestamp()) / 60));
+    }
+
+    /**
+     * This is just a VERY simple validation to stop the user from adding a work unit with time that is negative or zero.
+     * In a real application, this would most likely be aligned with FE to throw an exception
+     * or at least use Symfony's embedded validation.
+     **/
+     public function isValid(): bool
+    {
+        if ($this->end > $this->start ) { return true; }
+        return false;
     }
 }
