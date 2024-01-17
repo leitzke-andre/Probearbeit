@@ -1,13 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit WorkUnit{% endblock %}
+{% block title %}Edit Work Unit{% endblock %}
 
 {% block body %}
-    <h1>Edit WorkUnit</h1>
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Edit Work Unit</h1>
 
     {{ include('work_unit/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_work_unit_index') }}">back to list</a>
-
     {{ include('work_unit/_delete_form.html.twig') }}
+
+    <ul>
+        <li><a href="{{ path('app_work_unit_index') }}">back to list</a></li>
+    </ul>
+
+</div>
 {% endblock %}
