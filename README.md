@@ -33,9 +33,11 @@ In a real project environment those would be discussed previously, but these are
 
 ## Business
 - A Work Unit contains only start and end date/time, and no description is given.
-- A Work Unit pertains to only a single Project, a Project is expected to have multiple WorkUnits
+- A Work Unit pertains to only a single Project, a Project is expected to have multiple Work Units.
 - The evaluation chart will bring the full data history, aggregated by day or month as requested by the user. 
   - In a real production environment, there would likely be a cut-off or initial filter to ensure usability would not be sacrificed due to data volume.
 - The report will be generated as a CSV with raw data containing headers in the first row. No calculation will be done.
 - A Work Unit can span multiple days, no validation exists to prevent an unreasonable number of hours to be input by the user. 
   - No significant treatment of this last point was done, including in the evaluation reports which are based on the Work Unit's start date.
+- The Work Unit must have a positive number of minutes, if `end` and `start` **are equal**, or `start` is **greater than** `end` the Work Unit will not be saved.
+  - This will not, at the current point in time, show any error to the end user, and should ideally be handled on the frontend, whereas the backend should throw an exception and ideally respond with HTTP Status `400 (Bad Request)`.
