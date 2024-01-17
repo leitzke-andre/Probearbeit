@@ -13,17 +13,11 @@ In a real project environment those would be discussed previously, but these are
 - Docker
 
 ## Usage
-### First run:
-- Run `composer update` in the project directory
-- Run `docker compose up` to start the database server.
-- Run `symfony console doctrine:migrations:migrate` to execute the database migrations.
+- [Only in first execution] Run `composer update` in the project directory
+- Run `docker compose up -d` to start the database server and run it in background.
+- [Only in first execution] Run `symfony console doctrine:migrations:migrate` to execute the database migrations.
 - Run `symfony server:start` to start the server.
-- Navigate to https://127.0.0.1:8000/
-
-### Subsequent executions:
-- Run `docker compose up` to start the database server.
-- Run `symfony server:start` to start the server.
-- Navigate to https://127.0.0.1:8000/
+- Navigate to the address indicated by Symfony after startup (usually https://127.0.0.1:8000/) 
 
 # Assumptions
 ## Technical
