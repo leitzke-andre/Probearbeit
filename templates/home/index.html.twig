@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Welcome to SIO AG's code challenge! ✅</h1>
+
+    Navigate using the links below:
+    <ul>
+        <li><a href="{{ path('app_project_index') }}">Manage Projects</a></li>
+        <li><a href="{{ path('app_work_unit_index') }}">Manage Work Units</a></li>
+
+    </ul>
+</div>
+{% endblock %}
