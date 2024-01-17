@@ -16,7 +16,7 @@ class Project
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToOne(mappedBy: 'project', cascade: ['persist', 'remove'])]
+    #[ORM\OneToMany(mappedBy: 'project', cascade: ['persist', 'remove'])]
     private ?WorkUnit $workUnit = null;
 
     public function getId(): ?int
