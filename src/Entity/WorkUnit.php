@@ -64,4 +64,8 @@ class WorkUnit
 
         return $this;
     }
+
+    public function getTimeElapsedInMinutes() :int {
+        return abs(($this->end->getTimestamp() - $this->start->getTimestamp()) / 60);
+    }
 }

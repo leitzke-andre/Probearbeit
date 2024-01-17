@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Monthly Evaluation{% endblock %}
+
+{% block body %}
+    <h1>Monthly Evaluation</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Project</th>
+                <th>Total Minutes Worked</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reportMonth, monthData in reportData %}
+            {% for project, timeInMinutes in monthData %}
+                <tr>
+                    <td>{{ reportMonth }}</td>
+                    <td>{{ project }}</td>
+                    <td>{{ timeInMinutes }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <ul>
+        <li><a href="{{ path('app_evaluation') }}">Back to Evaluation</a></li>
+        <li><a href="{{ path('app_home') }}">Back to top</a></li>
+    </ul>
+
+{% endblock %}
